@@ -5,12 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
 import { postLogin } from '@/services/api/apiLogin';
+import { useRouter } from 'next/navigation';
 
 const InputLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+
+    const router = useRouter();
 
     const isFormValid = email && password;
 
@@ -28,6 +31,7 @@ const InputLogin = () => {
 
         if (res.status === 200) {
             console.log("BERHASIL", res);
+            router.push("/home");
         } else {
             console.log("GAGAL", res);
         }

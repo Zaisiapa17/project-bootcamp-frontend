@@ -1,3 +1,6 @@
+"use client";
+
+
 import {
     Award,
     BarChart3,
@@ -9,11 +12,16 @@ import {
 import { Button } from '@/components/ui/button'
 import { DarkModeDashboard } from "@/components/DarkModeDashboard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 
 export default function DashboardLayout({
     children, // will be a page or nested layout
 }) {
+
+    const router = useRouter();
+    
     return (
         <main className="grid grid-cols-6 grid-rows-12 h-screen gap-4 bg-slate-100 dark:bg-slate-800">
             <div className="col-span-1 row-span-12 grid content-between bg-white dark:bg-slate-900">
@@ -60,6 +68,10 @@ export default function DashboardLayout({
                             variant="destructive"
                             size="sm"
                             className="justify-center w-1/2"
+                            onClick={() => {
+                                deleteCookie("TOKEN");
+                                router.push("/login");
+                            }}
                         >
                             <LogOut className="mr-2 h-4 w-4" />
                             Logout
