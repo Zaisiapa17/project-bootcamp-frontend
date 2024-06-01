@@ -8,7 +8,6 @@ import {
     Mic2,
     Music2,
     Play,
-    Radio,
     User,
 } from "lucide-react";
 import { Button } from '@/components/ui/button'
@@ -17,8 +16,8 @@ export default function DashboardLayout({
     children, // will be a page or nested layout
 }) {
     return (
-        <main className="grid grid-rows-2 grid-flow-col gap-4">
-            <div className="row-span-3 space-y-4 py-4 bg-red-500">
+        <main className="grid grid-cols-6 grid-rows-8 h-screen gap-4 bg-slate-100">
+            <div className="col-span-1 row-span-8 bg-white">
                 <div className="px-4 py-2">
                     <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
                         Discover
@@ -50,37 +49,15 @@ export default function DashboardLayout({
                         </Button>
                     </div>
                 </div>
-                <div className="px-4 py-2">
-                    <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-                        Library
-                    </h2>
-                    <div className="space-y-1">
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <ListMusic className="mr-2 h-4 w-4" />
-                            Playlists
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Music2 className="mr-2 h-4 w-4" />
-                            Songs
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <User className="mr-2 h-4 w-4" />
-                            Made for You
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Mic2 className="mr-2 h-4 w-4" />
-                            Artists
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Library className="mr-2 h-4 w-4" />
-                            Albums
-                        </Button>
-                    </div>
+            </div>
+            <div className="col-span-5 row-span-1 bg-white rounded-bl-lg">
+                <div className="flex items-center justify-between h-full px-5">
+                    <h1>Home</h1>
+                    <h1>Home</h1>
                 </div>
             </div>
-            <div class="col-span-2 bg-green-500">02</div>
-            <div class="row-span-2 col-span-2 bg-orange-500">
-            {children}
+            <div className="col-span-5 row-span-7 bg-white rounded-tl-lg">
+                {children}
             </div>
         </main>
     )
